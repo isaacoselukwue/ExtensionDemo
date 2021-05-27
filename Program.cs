@@ -14,6 +14,9 @@ namespace ExtensionDemo
 
             var logger = new SimpleLogger();
             logger.LogError("This is an error");
+
+            logger.LogWarning("This is a warning");
+            Console.WriteLine("Goodbye");
         }
     }
     public static class ExtendSimpleLogger
@@ -23,6 +26,13 @@ namespace ExtensionDemo
             var defaultColour = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
             logger.Log(message, "Error");
+            Console.ForegroundColor = defaultColour;
+        }
+        public static void LogWarning(this SimpleLogger logger, string message)
+        {
+            var defaultColour = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            logger.Log(message, "Warning");
             Console.ForegroundColor = defaultColour;
         }
     }
